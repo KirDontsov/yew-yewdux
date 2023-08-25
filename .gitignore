@@ -1,3 +1,7 @@
 /target
-/dist
-/.idea
+
+dist
+dist/*
+
+.idea
+.idea/*
