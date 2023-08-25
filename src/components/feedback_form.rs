@@ -91,6 +91,7 @@ pub fn FeedbackForm() -> Html {
 						"border-0 rounded-md w-28 h-10 cursor-pointer hover:bg-indigo-500 {}",
 						if loading { "bg-[#ccc] text-gray-800"} else {"bg-indigo-600 text-white"}
 					)}
+					disabled={loading}
 				>
 					{"Send"}
 				</button>
