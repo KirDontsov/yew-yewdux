@@ -4,8 +4,8 @@ use yewdux::prelude::*;
 use super::feedback_item::FeedbackItem;
 use crate::store::{set_loading, Store};
 
-#[function_component]
-pub fn FeedbackList() -> Html {
+#[function_component(FeedbackList)]
+pub fn feedback_list() -> Html {
 	let (store, dispatch) = use_store::<Store>();
 	let feedback_list = store.feedbacks.clone();
 	let loading = store.loading.clone();

@@ -10,8 +10,8 @@ pub struct Props {
 	pub onchange: Callback<u8>,
 }
 
-#[function_component]
-pub fn Rating(props: &Props) -> Html {
+#[function_component(RatingComponent)]
+pub fn rating(props: &Props) -> Html {
 	let selected = props.selected;
 
 	let onchange = props.onchange.clone();

@@ -10,8 +10,8 @@ pub struct Props {
 	pub delay_ms: u32,
 }
 
-#[function_component]
-pub fn AlertComponent(props: &Props) -> Html {
+#[function_component(AlertComponent)]
+pub fn alert_component(props: &Props) -> Html {
 	let (store, dispatch) = use_store::<Store>();
 	let show_alert = store.alert_input.show_alert;
 

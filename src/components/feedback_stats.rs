@@ -3,8 +3,8 @@ use yewdux::prelude::*;
 
 use crate::store::Store;
 
-#[function_component]
-pub fn FeedbackStats() -> Html {
+#[function_component(FeedbackStats)]
+pub fn feedback_stats() -> Html {
 	let (store, _) = use_store::<Store>();
 	let count = store.feedbacks.len();
 	let sum: u32 = store.feedbacks.iter().map(|f| u32::from(f.rating)).sum();

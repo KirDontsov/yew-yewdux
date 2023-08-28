@@ -1,4 +1,4 @@
-use super::rating::Rating;
+use super::rating::RatingComponent;
 use crate::store::{set_feedback, set_loading, set_show_alert, Feedback, Store};
 use uuid::Uuid;
 use wasm_bindgen::JsCast;
@@ -6,8 +6,8 @@ use web_sys::HtmlInputElement;
 use yew::prelude::*;
 use yewdux::prelude::*;
 
-#[function_component]
-pub fn FeedbackForm() -> Html {
+#[function_component(FeedbackForm)]
+pub fn feedback_form() -> Html {
 	let (store, dispatch) = use_store::<Store>();
 	let loading = store.loading;
 	let text = use_state(String::new);
@@ -43,13 +43,11 @@ pub fn FeedbackForm() -> Html {
 		let text_input_ref = text_input_ref.clone();
 
 		Callback::from(move |event: SubmitEvent| {
-			let dispatch = cloned_dispatch.clone();
 			event.prevent_default();
-			set_loading(true, dispatch.clone());
 
 			if text.trim().len() < *min {
 				message.set(Some("Text must be at least 10 characters".to_string()));
-				set_loading(false, dispatch.clone());
+				set_loading(false, cloned_dispatch.clone());
 				return;
 			}
 
@@ -59,14 +57,17 @@ pub fn FeedbackForm() -> Html {
 				rating: *rating,
 			};
 
-			set_feedback(new_feedback, dispatch.clone());
-			set_show_alert("Feeback added successfully".to_string(), dispatch.clone());
+			set_feedback(new_feedback, cloned_dispatch.clone());
+			set_show_alert(
+				"Feeback added successfully".to_string(),
+				cloned_dispatch.clone(),
+			);
 
 			let text_input = text_input_ref.cast::<HtmlInputElement>().unwrap();
 			text_input.set_value("");
 			text.set(String::new());
 			rating.set(10);
-			set_loading(false, dispatch.clone());
+			set_loading(false, cloned_dispatch.clone());
 		})
 	};
 
@@ -76,7 +77,7 @@ pub fn FeedbackForm() -> Html {
 				<h2 class="text-center text-2xl font-bold">{"How would you rate your service with us?"}</h2>
 			</header>
 			<form onsubmit={on_submit}>
-				<Rating selected={*rating} onchange={handle_select} />
+				<RatingComponent selected={*rating} onchange={handle_select} />
 				<div class="flex border rounded-lg my-4 px-2 py-3">
 					<input
 						type="text"

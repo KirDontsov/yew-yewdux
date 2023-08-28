@@ -12,8 +12,8 @@ fn confirm_delete(message: &str) -> bool {
 	web_sys::Window::confirm_with_message(&web_sys::window().unwrap(), message).unwrap()
 }
 
-#[function_component]
-pub fn FeedbackItem(props: &Props) -> Html {
+#[function_component(FeedbackItem)]
+pub fn feedback_item(props: &Props) -> Html {
 	let (_, dispatch) = use_store::<Store>();
 
 	let on_delete = {
@@ -22,7 +22,10 @@ pub fn FeedbackItem(props: &Props) -> Html {
 		Callback::from(move |_: MouseEvent| {
 			if confirm_delete("Do you really want to delete this item?") {
 				delete_feedback(feedback_id, dispatch.clone());
-				set_show_alert("Feedback deleted successfully".to_string(), dispatch.clone());
+				set_show_alert(
+					"Feedback deleted successfully".to_string(),
+					dispatch.clone(),
+				);
 			}
 		})
 	};
