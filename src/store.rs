@@ -20,6 +20,7 @@ pub struct Store {
 	pub feedbacks: Vec<Feedback>,
 	pub loading: bool,
 	pub alert_input: AlertInput,
+	pub selected: String,
 }
 
 pub fn set_feedback(feedback: Feedback, dispatch: Dispatch<Store>) {
@@ -52,5 +53,11 @@ pub fn set_show_alert(message: String, dispatch: Dispatch<Store>) {
 pub fn set_hide_alert(dispatch: Dispatch<Store>) {
 	dispatch.reduce_mut(move |store| {
 		store.alert_input.show_alert = false;
+	})
+}
+
+pub fn set_selected(id: String, dispatch: Dispatch<Store>) {
+	dispatch.reduce_mut(move |store| {
+		store.selected = id;
 	})
 }

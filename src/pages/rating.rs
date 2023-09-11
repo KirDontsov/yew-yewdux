@@ -1,12 +1,13 @@
+use yew::prelude::*;
+use yewdux::prelude::*;
+use crate::store::Store;
+
 use crate::components::{
 	alert::{AlertComponent, Props as AlertProps},
 	feedback_form::FeedbackForm,
 	feedback_list::FeedbackList,
 	feedback_stats::FeedbackStats,
 };
-use crate::store::Store;
-use yew::prelude::*;
-use yewdux::prelude::*;
 
 #[function_component(Rating)]
 pub fn rating() -> Html {

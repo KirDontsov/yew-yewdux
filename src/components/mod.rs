@@ -4,3 +4,4 @@ pub mod feedback_item;
 pub mod feedback_list;
 pub mod feedback_stats;
 pub mod rating;
+pub mod table;

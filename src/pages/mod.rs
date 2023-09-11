@@ -1,3 +1,3 @@
 pub mod home;
-pub mod rating;
 pub mod not_found;
+pub mod rating;

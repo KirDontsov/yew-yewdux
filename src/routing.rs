@@ -1,9 +1,9 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::pages::rating::Rating;
 use crate::pages::home::Home;
 use crate::pages::not_found::NotFound;
+use crate::pages::rating::Rating;
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
