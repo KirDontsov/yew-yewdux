@@ -1,6 +1,15 @@
 use serde::{Deserialize, Serialize};
 use yewdux::prelude::*;
 
+#[derive(Default, PartialEq, Serialize, Deserialize, Store, Clone)]
+#[store(storage = "local", storage_tab_sync)]
+pub struct Store {
+	pub feedbacks: Vec<Feedback>,
+	pub loading: bool,
+	pub alert_input: AlertInput,
+	pub selected: String,
+}
+
 #[derive(Debug, Deserialize, Serialize, PartialEq, Clone)]
 pub struct Feedback {
 	pub id: uuid::Uuid,
@@ -12,15 +21,6 @@ pub struct Feedback {
 pub struct AlertInput {
 	pub show_alert: bool,
 	pub alert_message: String,
-}
-
-#[derive(Default, PartialEq, Serialize, Deserialize, Store, Clone)]
-#[store(storage = "local", storage_tab_sync)]
-pub struct Store {
-	pub feedbacks: Vec<Feedback>,
-	pub loading: bool,
-	pub alert_input: AlertInput,
-	pub selected: String,
 }
 
 pub fn set_feedback(feedback: Feedback, dispatch: Dispatch<Store>) {
