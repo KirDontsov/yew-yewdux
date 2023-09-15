@@ -1,7 +1,7 @@
+use crate::components::table::{TableCell, TableHeadCell};
+use crate::store::{set_selected, Store};
 use yew::prelude::*;
 use yewdux::prelude::use_store;
-use crate::store::{set_selected, Store};
-use crate::components::table::{TableCell, TableHeadCell};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Data {

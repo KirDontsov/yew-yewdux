@@ -1,6 +1,6 @@
+use crate::store::Store;
 use yew::prelude::*;
 use yewdux::prelude::*;
-use crate::store::Store;
 
 use crate::components::{
 	alert::{AlertComponent, Props as AlertProps},

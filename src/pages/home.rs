@@ -1,5 +1,5 @@
+use crate::components::table::{Data, Table};
 use yew::prelude::*;
-use crate::components::table::{Table, Data};
 
 #[function_component(Home)]
 pub fn home() -> Html {
@@ -35,7 +35,6 @@ pub fn home() -> Html {
 			age: "66".into(),
 		},
 	];
-
 
 	html!(
 		<div class="min-w-full flex flex-col gap-8 p-16">

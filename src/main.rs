@@ -2,6 +2,7 @@ mod components;
 mod pages;
 mod routing;
 mod store;
+mod utils;
 
 use routing::{switch, Route};
 use yew::prelude::*;
@@ -16,6 +17,4 @@ fn app() -> Html {
 	}
 }
 
-fn main() {
-	yew::Renderer::<App>::new().render();
-}
+fn main() { yew::Renderer::<App>::new().render(); }

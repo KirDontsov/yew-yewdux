@@ -5,9 +5,17 @@ use yewdux::prelude::*;
 #[store(storage = "local", storage_tab_sync)]
 pub struct Store {
 	pub feedbacks: Vec<Feedback>,
+	pub credentials: Vec<Credentials>,
 	pub loading: bool,
 	pub alert_input: AlertInput,
 	pub selected: String,
+}
+
+#[derive(Debug, Deserialize, Serialize, PartialEq, Clone)]
+pub struct Credentials {
+	pub id: uuid::Uuid,
+	pub login: String,
+	pub password: String,
 }
 
 #[derive(Debug, Deserialize, Serialize, PartialEq, Clone)]
@@ -59,5 +67,11 @@ pub fn set_hide_alert(dispatch: Dispatch<Store>) {
 pub fn set_selected(id: String, dispatch: Dispatch<Store>) {
 	dispatch.reduce_mut(move |store| {
 		store.selected = id;
+	})
+}
+
+pub fn set_credentials(credentials: Credentials, dispatch: Dispatch<Store>) {
+	dispatch.reduce_mut(move |store| {
+		store.credentials.insert(0, credentials);
 	})
 }
